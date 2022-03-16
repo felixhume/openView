@@ -1,6 +1,6 @@
 import os
 
 web = input("enter unblock website  >")
-web_ = "echo among us"
+web_ = "wget "+web
 
 os.system(web_)
