@@ -1,5 +1,5 @@
 import os
 
 web = input("enter unblock website  >")
-
-print(os.system("wget", web))
+web_ = "wget", web
+print(os.system(web_))
