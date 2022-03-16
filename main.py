@@ -8,10 +8,13 @@ web = input("enter unblock website  >")
 web_ = "wget -output-document="+web+" "+web
 
 os.system(web_)
+
 Handler = http.server.SimpleHTTPRequestHandler
 with socketserver.TCPServer(("localhost", PORT), Handler) as httpd:
-    try:
-        httpd.serve_forever()
-    except Exception as issue:
-        print(issue)
-        exit()
+    httpd.serve_forever()
+    with open(web+"\index.html") as file:
+        for line in file:
+            urls = re.findall('https?://(?:[-\w.]|(?:%[\da-fA-F]{2}))+', line)
+            print(urls)
+            for url in urls:
+                os.system("wget -output-document="+web+"/"+url)
