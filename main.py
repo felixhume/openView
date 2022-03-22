@@ -44,7 +44,7 @@ print("""
 """)
 PORT = 8080
 web = input("enter unblock website  >")
-web_ = "wget -output-document="+web+" "+web
+web_ = "wget "+web
 
 os.system(web_)
 
